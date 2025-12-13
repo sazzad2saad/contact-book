@@ -3,7 +3,7 @@
 #include "fileio.h"
 #include "contacts.h"
 
-#define FILE_PATH "data//contacts.db"
+#define FILE_PATH "data//contacts.dat"
 
 void loadContacts(Contact *contacts, int *count){
     FILE *fptr = fopen(FILE_PATH,"rb");
