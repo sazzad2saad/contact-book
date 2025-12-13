@@ -14,7 +14,7 @@ void loadContacts(Contact *contacts, int *count){
 }
 
 void saveContact(Contact *contact, int count){
-    FILE *fptr = fopen(FILE_PATH,"ab");
+    FILE *fptr = fopen(FILE_PATH,"wb");
     if(!fptr){
         printf("Error Saving File!\n");
         return;
