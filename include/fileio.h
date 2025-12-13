@@ -5,5 +5,6 @@
 
 void loadContatcts(Contact *, int *);
 void saveContact(Contact *, int);
+void export(Contact *, int);
 
 #endif

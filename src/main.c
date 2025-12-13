@@ -36,6 +36,8 @@ int main(void){
          deleteContact(contacts, &count); break;
       case 6:
          sortContact(contacts, count); break;
+      case 7:
+         export(contacts, count); break;
       case 0:
          saveContact(contacts, count); printf("Saved and Exiting"); break;
       default:
@@ -60,6 +62,7 @@ int show_menu(void){
    printf("4. Edit Contact\n");
    printf("5. Delete Contact\n");
    printf("6. Sort Contact\n");
+   printf("7. Export in CSV \n");
    printf("0. EXIT\n");
 
    int choice; scanf("%i",&choice);
