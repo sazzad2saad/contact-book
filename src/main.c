@@ -3,7 +3,7 @@
 #include "color.h"
 #include "contacts.h"
 #include "fileio.h"
-#include "utils.h"
+// #include "temp.c"
 
 #define RESET     "\033[0m"
 
@@ -14,6 +14,8 @@ int main(void){
    
    Contact contacts[MAX_CONTACTS];
    int count = 0;
+
+   loadContacts(contacts, &count);
 
 
    int choice;

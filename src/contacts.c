@@ -10,13 +10,32 @@ void addContact(Contact *contacts, int * count){
     }
 
     Contact contact;
-    printf("Enter name: "); getLine(contact.name, 50);
-    printf("Enter number: "); getLine(contact.number, 16);
-    printf("Enter Email: "); getLine(contact.email, 50);
+    do{
+        printf("Enter name: "); getLine(contact.name, 50);
+        if(!validName(contact.name)){
+            printf("Name cannot be empty!");
+        }
+    } while (!validName(contact.name));
+
+    do{
+        printf("Enter number: "); getLine(contact.number, 16);
+        if(!validNumber(contact.number)){
+            printf("Give a Valid number");
+        }
+    } while (!validNumber(contact.number));
+    
+    do{
+        printf("Enter Email: "); getLine(contact.email, 50);
+        if(!validEmail(contact.email)){
+            printf("Give a valid Email!");
+        }
+    }while (!validEmail(contact.email));
+    
     contacts[*count] = contact;
     (*count)++;
     printf("Contact added successfully!\n");
 }
+
 void listContact(Contact *contacts, int count){
     if(count == 0){
         printf("No contact Available!\n");
@@ -27,35 +46,67 @@ void listContact(Contact *contacts, int count){
         printf("%.2i. %s | %s | %s\n", i + 1, contacts[i].name, contacts[i].number, contacts[i].email);
     }
 }
+
 void searchContact(Contact *contacts, int count){
-    char temp_name[50];
-    printf("Enter name: "); getLine(temp_name, 50);
+    char name[50];
+    do{
+        printf("Enter name: "); getLine(name, 50);
+        if(!validName(name)){
+            printf("Name cannot be empty!");
+        }
+    } while (!validName(name));
+
     for(int i = 0; i < count; i++){
-        if(strcasecmp(contacts[i].name,temp_name) == 0){
+        if(strcasecmp(contacts[i].name,name) == 0){
             printf("Found: %s | %s | %s\n",contacts[i].name, contacts[i].number,contacts[i].email);
             return;
         }
     }
 }
+
 void editContact(Contact *contacts, int count){
-    char temp_name[50]; 
-    printf("Enter name: "); getLine(temp_name, 50);
+    char name[50];
+    do{
+        printf("Enter name: "); getLine(name, 50);
+        if(!validName(name)){
+            printf("Name cannot be empty!");
+        }
+    } while (!validName(name));
 
     for (int i = 0; i < count; i++){
-        if(strcasecmp(contacts[i].name, temp_name) == 0){
+        if(strcasecmp(contacts[i].name, name) == 0){
             printf("Editting %s...", contacts[i].name);
-            printf("Enter new number: "); getLine(contacts[i].number, 16);
-            printf("Enter new Email: "); getLine(contacts[i].email, 50);
+
+            do{
+                printf("Enter number: "); getLine(contacts[i].number, 16);
+                if(!validNumber(contacts[i].number)){
+                    printf("Give a Valid number");
+                }
+            } while (!validNumber(contacts[i].number));
+            
+            do{
+                printf("Enter Email: "); getLine(contacts[i].email, 50);
+                if(!validEmail(contacts[i].email)){
+                    printf("Give a valid Email!");
+                }
+            } while (!validEmail(contacts[i].email));
+
             return;
         }
     }
 }
+
 void deleteContact(Contact *contacts, int *count){
-    char temp_name[50]; 
-    printf("Enter name: "); getLine(temp_name, 50);
+    char name[50]; 
+    do{
+        printf("Enter name: "); getLine(name, 50);
+        if(!validName(name)){
+            printf("Name cannot be empty!");
+        }
+    } while (!validName(name));
 
     for (int i = 0; i < *count; i++){
-        if(strcasecmp(contacts[i].name, temp_name) == 0){
+        if(strcasecmp(contacts[i].name, name) == 0){
             for(int j = i; j < *count - 1 ; j++){
                 contacts[j] = contacts[j + 1];
             }

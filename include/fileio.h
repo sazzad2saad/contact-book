@@ -3,7 +3,7 @@
 
 #include "contacts.h"
 
-void loadContatcts(Contact *, int *);
+void loadContacts(Contact *, int *);
 void saveContact(Contact *, int);
 void export(Contact *, int);
 
